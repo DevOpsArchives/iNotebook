@@ -1,7 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useContext } from "react";
+import noteContext from "../context/notes/NoteContext";
 
 const NoteItem = (props) => {
+  const { deleteNote } = useContext(noteContext);
   const { note } = props;
+
   return (
     <div className="col-md-3">
       <div className="card my-3">
@@ -11,6 +14,9 @@ const NoteItem = (props) => {
           <i
             className="far fa-trash-alt mx-2"
             style={{ cursor: "pointer" }}
+            onClick={() => {
+              deleteNote(note._id);
+            }}
           ></i>
           <i
             className="far fa-edit my-1 float-end"
