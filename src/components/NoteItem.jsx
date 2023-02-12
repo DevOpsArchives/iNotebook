@@ -8,6 +8,14 @@ const NoteItem = (props) => {
         <div className="card-body">
           <h5 className="card-title">{note.title}</h5>
           <p className="card-text">{note.description}</p>
+          <i
+            className="far fa-trash-alt mx-2"
+            style={{ cursor: "pointer" }}
+          ></i>
+          <i
+            className="far fa-edit my-1 float-end"
+            style={{ cursor: "pointer" }}
+          ></i>
         </div>
       </div>
     </div>
