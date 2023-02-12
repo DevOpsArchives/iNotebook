@@ -37,7 +37,6 @@ const NoteState = (props) => {
 
   // Update a Note
   const updateNote = async (id, title, description, tag) => {
-    // API Call
     const response = await fetch(url, {
       method: "POST",
       headers: {
