@@ -1,14 +1,14 @@
 import React from "react";
-import Link from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
-          <a className="navbar-brand" to="/">
+          <Link className="navbar-brand" to="/">
             iNotebook
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
