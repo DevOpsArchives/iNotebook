@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import About from "./components/About";
 import NotFound from "./components/NotFound";
+import NoteState from "./context/notes/NotesState";
 
 function App() {
   const router = createBrowserRouter([
@@ -33,7 +34,9 @@ function App() {
   ]);
   return (
     <div className="App">
-      <RouterProvider router={router} />
+      <NoteState>
+        <RouterProvider router={router} />
+      </NoteState>
     </div>
   );
 }
