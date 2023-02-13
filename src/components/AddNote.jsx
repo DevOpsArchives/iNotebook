@@ -8,6 +8,7 @@ const AddNote = () => {
   const handleAddNoteClick = (e) => {
     e.preventDefault(); // So that the page does not reload
     addNote(note.title, note.description, note.tag);
+    setNote({ title: "", description: "", tag: "" });
   };
 
   const onChange = (e) => {
@@ -28,7 +29,10 @@ const AddNote = () => {
             id="title"
             name="title"
             aria-describedby="emailHelp"
+            value={note.title}
             onChange={onChange}
+            minLength={5}
+            required
           />
         </div>
         <div className="mb-3">
@@ -40,7 +44,10 @@ const AddNote = () => {
             className="form-control"
             id="description"
             name="description"
+            value={note.description}
             onChange={onChange}
+            minLength={20}
+            required
           />
         </div>
         <div className="mb-3">
@@ -52,7 +59,10 @@ const AddNote = () => {
             className="form-control"
             id="tag"
             name="tag"
+            value={note.tag}
             onChange={onChange}
+            minLength={2}
+            required
           />
         </div>
         <div>
@@ -60,6 +70,7 @@ const AddNote = () => {
             type="submit"
             className="btn btn-primary"
             onClick={handleAddNoteClick}
+            disabled={note.title.length <= 5 || note.description.length <= 20}
           >
             Add
           </button>
