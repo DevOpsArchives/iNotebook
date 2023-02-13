@@ -11,7 +11,10 @@ const Notes = () => {
   }, []);
 
   const ref = useRef(null);
+  const refClose = useRef(null);
+
   const [note, setNote] = useState({
+    id: "",
     e_title: "",
     e_description: "",
     e_tag: "",
@@ -20,6 +23,7 @@ const Notes = () => {
   const updateNoteModal = (currentNote) => {
     ref.current.click();
     setNote({
+      id: currentNote._id,
       e_title: currentNote.title,
       e_description: currentNote.description,
       e_tag: currentNote.tag,
@@ -28,8 +32,8 @@ const Notes = () => {
 
   const handleAddNoteClick = (e) => {
     e.preventDefault(); // So that the page does not reload
-    // updateNote(note.title, note.description, note.tag);
-    console.log("Updating note");
+    updateNote(note.id, note.e_title, note.e_description, note.e_tag);
+    refClose.current.click();
   };
 
   const onChange = (e) => {
@@ -114,6 +118,7 @@ const Notes = () => {
             </div>
             <div className="modal-footer">
               <button
+                ref={refClose}
                 type="button"
                 className="btn btn-secondary"
                 data-bs-dismiss="modal"

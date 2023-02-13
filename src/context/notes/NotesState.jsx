@@ -37,21 +37,29 @@ const NoteState = (props) => {
 
   // Update a Note
   const updateNote = async (id, title, description, tag) => {
-    const response = await fetch(url, {
-      method: "POST",
+    const response = await fetch(`${host}/api/notes/updateNote/${id}`, {
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        Authorization:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjNlOTNjMjAxMTI2NzJlMjgxZDAxZDU0In0sImlhdCI6MTY3NjIzMDQ2N30.awMW8W4Drr0R_7XK9C7zkx43bJz4dP1zebUFL6zcbis",
       },
-      body: JSON.stringify({}),
+      body: JSON.stringify({ title, description, tag }),
     });
-    for (let index = 0; index < notes.length; index++) {
-      const element = notes[index];
-      if (element._id === id) {
-        element.title = title;
-        element.description = description;
-        element.tag = tag;
+    const json = await response.json();
+    // TODO - Need to check for errors from backend
+
+    // Parse is for deepCopy
+    let newNotes = JSON.parse(JSON.stringify(notes));
+    for (let index = 0; index < newNotes.length; index++) {
+      if (newNotes[index]._id === id) {
+        newNotes[index].title = title;
+        newNotes[index].description = description;
+        newNotes[index].tag = tag;
+        break;
       }
     }
+    setNotes(newNotes);
   };
 
   // Delete a Note
