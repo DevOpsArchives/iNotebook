@@ -5,8 +5,8 @@ import Home from "./components/Home";
 import About from "./components/About";
 import NotFound from "./components/NotFound";
 import NoteState from "./context/notes/NotesState";
-import Login from "./components/Login";
-import SignUp from "./components/SignUp";
+import Login from "./components/auth/Login";
+import SignUp from "./components/auth/SignUp";
 
 function App() {
   const router = createBrowserRouter([
