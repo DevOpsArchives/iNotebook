@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
 function Navbar() {
@@ -46,14 +46,34 @@ function Navbar() {
                 </Link>
               </li>
             </ul>
-            <form className="d-flex">
-              <Link className="btn btn-primary mx-1" to="/login" role="button">
-                Login
-              </Link>
-              <Link className="btn btn-primary mx-1" to="/signup" role="button">
-                SingUp
-              </Link>
-            </form>
+            {(sessionStorage.getItem("Authorization") === null && (
+              <form className="d-flex">
+                <Link
+                  className="btn btn-primary mx-1"
+                  to="/login"
+                  role="button"
+                >
+                  Login
+                </Link>
+                <Link
+                  className="btn btn-primary mx-1"
+                  to="/signup"
+                  role="button"
+                >
+                  SingUp
+                </Link>
+              </form>
+            )) || (
+              <form className="d-flex">
+                <Link
+                  className="btn btn-primary mx-1"
+                  to="/logout"
+                  role="button"
+                >
+                  Logout
+                </Link>
+              </form>
+            )}
           </div>
         </div>
       </nav>
