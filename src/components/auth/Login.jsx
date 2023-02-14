@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast, { Toaster, ToastBar } from "react-hot-toast";
 
 const Login = () => {
   const navigate = useNavigate();
   const [credentials, setCredentials] = useState({ email: "", password: "" });
+
+  useEffect(() => {
+    if (sessionStorage.getItem("Authorization") !== null) navigate("/");
+  }, []);
 
   const onCredentialsChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
