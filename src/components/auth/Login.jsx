@@ -52,7 +52,6 @@ const Login = () => {
           />
         )}
       </Toaster>
-      ;
       <div className="container my-5">
         <form onSubmit={handleLogin}>
           <div className="mb-3">
