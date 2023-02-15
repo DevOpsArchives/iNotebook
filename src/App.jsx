@@ -7,6 +7,7 @@ import NotFound from "./components/NotFound";
 import NoteState from "./context/notes/NotesState";
 import Login from "./components/auth/Login";
 import SignUp from "./components/auth/SignUp";
+import Logout from "./components/auth/Logout";
 
 function App() {
   const router = createBrowserRouter([
@@ -34,6 +35,10 @@ function App() {
         {
           path: "/signup",
           element: <SignUp />,
+        },
+        {
+          path: "/logout",
+          element: <Logout />,
         },
       ],
     },
