@@ -7,7 +7,7 @@ const Notes = () => {
   const { notes, getNotes, updateNote } = useContext(noteContext);
 
   useEffect(() => {
-    getNotes();
+    if (sessionStorage.getItem("Authorization") !== null) getNotes();
   }, []);
 
   const ref = useRef(null);
@@ -149,9 +149,11 @@ const Notes = () => {
       <div className="container">
         <div className="row my-3">
           <h2>Your Notes</h2>
-          <div className="container text-center my-5">
+          {notes.length == 0 && (
+            <div className="container text-center my-5">
               <p>No Notes to display</p>
             </div>
+          )}
           {notes.map((note) => {
             return (
               <NoteItem
