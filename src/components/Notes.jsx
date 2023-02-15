@@ -150,8 +150,8 @@ const Notes = () => {
         <div className="row my-3">
           <h2>Your Notes</h2>
           <div className="container text-center my-5">
-            {notes.length == 0 && "No Notes to display"}
-          </div>
+              <p>No Notes to display</p>
+            </div>
           {notes.map((note) => {
             return (
               <NoteItem
